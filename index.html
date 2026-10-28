@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meu Portfólio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class'
+    }
+  </script>
+  <style>
+    body {
+      transition: background-color 0.3s, color 0.3s;
+    }
+  </style>
+</head>
+<body class="bg-white text-slate-800 dark:bg-slate-900 dark:text-slate-100 min-h-screen font-sans flex flex-col justify-between">
+
+  <!-- CABEÇALHO -->
+  <header class="p-6 border-b border-slate-200 dark:border-slate-800 flex justify-between items-center max-w-4xl mx-auto w-full">
+    <h1 class="text-xl font-bold">Meu Portfólio</h1>
+    <!-- 1. Botão Dark Mode -->
+    <button id="btn-dark" class="px-4 py-2 rounded-lg bg-slate-200 dark:bg-slate-800 text-sm font-medium hover:opacity-80">
+      🌙 Alternar Tema
+    </button>
+  </header>
+
+  <!-- CONTEÚDO PRINCIPAL -->
+  <main class="max-w-4xl mx-auto w-full p-6 space-y-10 flex-grow">
+    
+    <!-- APRESENTAÇÃO E CURTIDAS -->
+    <section class="space-y-4">
+      <h2 class="text-3xl font-extrabold">Olá, sou Dev Web! 👋</h2>
+      <p class="text-slate-600 dark:text-slate-400">Desenvolvo páginas modernas, limpas e interativas com HTML, CSS e JavaScript.</p>
+      
+      <!-- 3. Contador de Curtidas -->
+      <button id="btn-curtir" class="px-5 py-2.5 bg-rose-500 hover:bg-rose-600 text-white rounded-lg font-medium transition">
+        ❤️ Curtir
+      </button>
+      <span id="contador" class="ml-3 font-semibold text-slate-700 dark:text-slate-300">0 curtidas</span>
+    </section>
+
+    <!-- SOBRE MIM E CURIOSIDADE -->
+    <section class="p-6 rounded-xl bg-slate-100 dark:bg-slate-800/50 space-y-4">
+      <h3 class="text-xl font-bold">Sobre Mim</h3>
+      <p class="text-slate-600 dark:text-slate-300">Gosto de resolver problemas simples com código limpo e eficiente.</p>
+      
+      <!-- 2. Curiosidade Oculta -->
+      <button id="btn-curiosidade" class="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white text-sm rounded-lg font-medium">
+        Mostrar Curiosidade
+      </button>
+
+      <div id="curiosidade-texto" style="display: none;" class="p-4 mt-2 bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700 text-sm">
+        💡 Curiosidade: Eu aprendi a programar criando pequenos jogos de texto e sou fã de café sem açúcar!
+      </div>
+    </section>
+
+    <!-- PROJETOS -->
+    <section class="space-y-4">
+      <h3 class="text-xl font-bold">Projetos</h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="p-4 rounded-xl border border-slate-200 dark:border-slate-800">
+          <h4 class="font-bold">Projeto 01</h4>
+          <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">Aplicação Web Simples em Vanilla JS.</p>
+        </div>
+        <div class="p-4 rounded-xl border border-slate-200 dark:border-slate-800">
+          <h4 class="font-bold">Projeto 02</h4>
+          <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">Página de Destino Responsiva com Tailwind CSS.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- RODAPÉ -->
+  <footer class="p-6 border-t border-slate-200 dark:border-slate-800 text-center text-xs text-slate-500">
+    Portfólio Simplificado — Manipulação de DOM em JavaScript
+  </footer>
+
+  <!-- JAVASCRIPT SIMPLIFICADO E SEM COMENTÁRIOS // -->
+  <script>
+    const btnDark = document.getElementById("btn-dark");
+    btnDark.addEventListener("click", function () {
+      document.documentElement.classList.toggle("dark");
+    });
+
+    const btnCuriosidade = document.getElementById("btn-curiosidade");
+    const curiosidadeTexto = document.getElementById("curiosidade-texto");
+    btnCuriosidade.addEventListener("click", function () {
+      if (curiosidadeTexto.style.display === "none") {
+        curiosidadeTexto.style.display = "block";
+        btnCuriosidade.textContent = "Esconder Curiosidade";
+      } else {
+        curiosidadeTexto.style.display = "none";
+        btnCuriosidade.textContent = "Mostrar Curiosidade";
+      }
+    });
+
+    const btnCurtir = document.getElementById("btn-curtir");
+    const contador = document.getElementById("contador");
+    let curtidas = 0;
+    btnCurtir.addEventListener("click", function () {
+      curtidas++;
+      contador.textContent = `${curtidas} curtidas`;
+    });
+  </script>
+</body>
+</html>
